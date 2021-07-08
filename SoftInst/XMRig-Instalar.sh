@@ -2,11 +2,11 @@
 
 pkg update
 pkg upgrade
-pkg install git
+pkg install -y git
 git clone https://github.com/xmrig/xmrig.git
 cd xmrig
 mkdir build
 cd build
-pkg install cmake
+pkg install -y cmake
 cmake ..
 
