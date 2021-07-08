@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DirWallet="451K8ZpJTWdLBKb5uCR1EWM5YfCUxdgxWFjYrvKSTaWpH1zdz22JDQBQeZCw7wZjRm3wqKTjnp9NKZpfyUzncXCJ24H4Xtr"
+
 echo ""
 echo "  Actualizando los paquetes de Termux..."
 echo ""
@@ -56,6 +58,6 @@ echo ""
 echo ""
 echo "  Ejecutando minero..."
 echo ""
-./xmrig -o pool.minexmr.com:4444 --rig-id=$Dispositivo -u 451K8ZpJTWdLBKb5uCR1EWM5YfCUxdgxWFjYrvKSTaWpH1zdz22JDQBQeZCw7wZjRm3wqKTjnp9NKZpfyUzncXCJ24H4Xtr
+./xmrig -o pool.minexmr.com:4444 --rig-id=$Dispositivo -u $DirWallet
 #/data/data/com.termux/files/home/xmrig/build/xmrig
 
