@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DirWallet="451K8ZpJTWdLBKb5uCR1EWM5YfCUxdgxWFjYrvKSTaWpH1zdz22JDQBQeZCw7wZjRm3wqKTjnp9NKZpfyUzncXCJ24H4Xtr"
+Hilos=4
 
 echo ""
 echo "  Actualizando los paquetes de Termux..."
@@ -60,10 +61,10 @@ echo "  Ejecutando minero..."
 echo ""
 
 ## Con TLS
-./xmrig -o pool.minexmr.com:443 --tls --rig-id=$Dispositivo -u $DirWallet
+./xmrig -o pool.minexmr.com:443 --threads=$Hilos --rig-id=$Dispositivo -u $DirWallet --tls 
 
 ## Sin TLS
-   #./xmrig -o pool.minexmr.com:4444 --rig-id=$Dispositivo -u $DirWallet
+   #./xmrig -o pool.minexmr.com:4444 --threads=$Hilos --rig-id=$Dispositivo -u $DirWallet
 
 #/data/data/com.termux/files/home/xmrig/build/xmrig
 
