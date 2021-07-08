@@ -29,7 +29,8 @@ pkg install -y ossp-uuid
 uuid > ~/IdDispositivo.txt
 Dispositivo=$(cat ~/IdDispositivo.txt)
 echo ""
-echo " El identificador del dispositivo es $Dispositivo"
+echo "El identificador del dispositivo es:"
+echo "$Dispositivo"
 echo ""
 
 echo ""
