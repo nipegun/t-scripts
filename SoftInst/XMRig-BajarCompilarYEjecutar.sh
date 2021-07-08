@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DirWallet="451K8ZpJTWdLBKb5uCR1EWM5YfCUxdgxWFjYrvKSTaWpH1zdz22JDQBQeZCw7wZjRm3wqKTjnp9NKZpfyUzncXCJ24H4Xtr"
-Hilos=8
+Hilos=$(cat /proc/self/status | grep pus_allowed_list | cut -d"-" -f2)
 
 echo ""
 echo "  Actualizando los paquetes de Termux..."
