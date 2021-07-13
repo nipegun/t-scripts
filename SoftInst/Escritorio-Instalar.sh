@@ -14,6 +14,11 @@ pkg install -y tigervnc
 export DISPLAY=":1"
 
 echo ""
+echo "  Configurando XServer..."
+echo ""
+export DISPLAY=localhost:0
+
+echo ""
 echo "  Instalando mate-desktop"
 echo ""
 pkg install -y mate-*
