@@ -25,46 +25,20 @@ pkg install -y cmake
 cmake .. -DWITH_HWLOC=OFF
 make -j $(nproc)
 
-#echo ""
-#echo "  Generando un identificador de dispositivo con el UUID..."
-#echo ""
-#pkg install -y ossp-uuid
-#uuid > ~/IdDispositivo.txt
-#Dispositivo=$(cat ~/IdDispositivo.txt)
-#echo ""
-#echo "El identificador del dispositivo es:"
-#echo "$Dispositivo"
-#echo ""
-
-#echo ""
-#echo "  Generando un identificador de dispositivo con el IMEI..."
-#echo ""
-#pkg install -y termux-api
-#termux-telephony-deviceinfo > ~/IdDispositivoIMEI.txt
-#Dispositivo=$(cat ~/IdDispositivoIMEI.txt)
-#echo ""
-#echo "El identificador del dispositivo es:"
-#echo "$Dispositivo"
-#echo ""
-
 echo ""
-echo "  Obteniendo dirección mac de la tarjeta inalámbrica..."
-echo ""
-DirMACWlan0=$(ip addr show wlan0 | grep link/ether | cut -d" " -f6)
-echo ""
-echo "  La dirección MAC de la tarjeta inalámbrica es: $DirMACWlan0"
+echo "  Creando ID para el minero..."
 echo ""
 
-echo ""
-echo "  Generando un identificador del minero a partir de la MAC $DirMACWlan0..."
-echo ""
-IdMinero=$(echo -n $DirMACWlan0 | md5sum | cut -d" " -f1)
-echo ""
-echo "  El identificador de este minero es: $IdMinero"
-echo ""
+## A partir de la MAC WiFi
+   ## Obtener MAC de la WiFi
+      DirMACwlan0=$(ip addr show wlan0 | grep link/ether | cut -d" " -f6 | sed 's/://g')
+   ## Generar un identificador del minero a partir de la MAC de la WiFi...
+      IdMinero=$(echo -n $DirMACwlan0 | md5sum | cut -d" " -f1)
 
 echo ""
-echo "  Ejecutando minero con identificador $IdMinero..."
+echo "  Ejecutando minero con identificador:"
+echo""
+echo "  $IdMinero..."
 echo ""
 
 ## Con TLS
