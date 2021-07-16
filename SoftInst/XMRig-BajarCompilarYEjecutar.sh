@@ -48,18 +48,23 @@ make -j $(nproc)
 #echo ""
 
 echo ""
-echo "  Generando un identificador de dispositivo a partir de la MAC de la WiFi..."
+echo "  Obteniendo dirección mac de la tarjeta inalámbrica..."
 echo ""
 DirMACWlan0=$(ip addr show wlan0 | grep link/ether | cut -d" " -f6)
-Dispositivo=$(echo -n $DirMACWlan0 | md5sum | cut -d" " -f1)
 echo ""
-echo "El identificador del dispositivo es:"
-echo ""
-echo "$Dispositivo"
+echo "  La dirección MAC de la tarjeta inalámbrica es: $DirMACWlan0"
 echo ""
 
 echo ""
-echo "  Ejecutando minero..."
+echo "  Generando un identificador del minero a partir de la MAC $DirMACWlan0..."
+echo ""
+IdMinero=$(echo -n $DirMACWlan0 | md5sum | cut -d" " -f1)
+echo ""
+echo "  El identificador de este minero es: $IdMinero"
+echo ""
+
+echo ""
+echo "  Ejecutando minero con identificador $IdMinero..."
 echo ""
 
 ## Con TLS
