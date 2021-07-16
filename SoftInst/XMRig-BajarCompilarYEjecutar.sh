@@ -37,7 +37,7 @@ echo ""
 
 echo ""
 echo "  Ejecutando minero con identificador:"
-echo""
+echo ""
 echo "  $IdMinero..."
 echo ""
 
