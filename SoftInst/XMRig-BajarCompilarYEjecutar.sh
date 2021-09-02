@@ -6,12 +6,15 @@ Hilos=$(cat /proc/self/status | grep pus_allowed_list | cut -d"-" -f2)
 echo ""
 echo "  Actualizando los paquetes de Termux..."
 echo ""
-pkg update
-pkg upgrade
+pkg -y update
+pkg -y upgrade
 
 echo ""
 echo "  Descargando el repositorio de XMRig..."
 echo ""
+rm -rf ~/Cryptos/XMR/minero/
+mkdir -p ~/Cryptos/XMR/
+cd ~/Cryptos/XMR/
 pkg install -y git
 git clone https://github.com/xmrig/xmrig.git
 cd xmrig
@@ -24,6 +27,10 @@ cd build
 pkg install -y cmake
 cmake .. -DWITH_HWLOC=OFF
 make -j $(nproc)
+
+## Preparar la carpeta del minero
+   mv ~/Cryptos/XMR/xmrig/build/ ~/Cryptos/XMR/minero/
+   rm -rf ~/Cryptos/XMR/xmrig/
 
 echo ""
 echo "  Creando ID para el minero..."
