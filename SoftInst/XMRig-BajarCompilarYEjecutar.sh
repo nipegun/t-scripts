@@ -9,7 +9,6 @@ echo ""
 pkg update -y
 pkg upgrade -y
 pkg autoclean 	-y
-pkg clean -y
 
 echo ""
 echo "  Descargando el repositorio de XMRig..."
