@@ -6,8 +6,8 @@ Hilos=$(cat /proc/self/status | grep pus_allowed_list | cut -d"-" -f2)
 echo ""
 echo "  Actualizando los paquetes de Termux..."
 echo ""
-pkg -y update
-pkg -y upgrade
+pkg update -y
+pkg upgrade -y
 
 echo ""
 echo "  Descargando el repositorio de XMRig..."
