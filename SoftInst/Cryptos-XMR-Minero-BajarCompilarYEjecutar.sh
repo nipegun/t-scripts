@@ -13,17 +13,21 @@ DirWallet="451K8ZpJTWdLBKb5uCR1EWM5YfCUxdgxWFjYrvKSTaWpH1zdz22JDQBQeZCw7wZjRm3wq
 Hilos=$(cat /proc/self/status | grep pus_allowed_list | cut -d"-" -f2)
 
 echo ""
-echo "  Actualizando los paquetes de Termux..."
+echo "  Actualizando Termux..."
 echo ""
+apt-get -y update
+apt-get -y upgrade
+apt-get -y dist-upgrade
+apt-get -y autoremove
 pkg update -y
 pkg upgrade -y
-pkg autoclean 	-y
+pkg autoclean -y
 
 echo ""
 echo "  Descargando el repositorio de XMRig..."
 echo ""
-rm -rf ~/Cryptos/XMR/minero/
-mkdir -p ~/Cryptos/XMR/
+rm -rf ~/Cryptos/XMR/minero/ 2> /dev/null
+mkdir -p ~/Cryptos/XMR/ 2> /dev/null
 cd ~/Cryptos/XMR/
 pkg install -y git
 git clone https://github.com/xmrig/xmrig.git
@@ -40,7 +44,7 @@ make -j $(nproc)
 
 ## Preparar la carpeta del minero
    mv ~/Cryptos/XMR/xmrig/build/ ~/Cryptos/XMR/minero/
-   rm -rf ~/Cryptos/XMR/xmrig/
+   rm -rf ~/Cryptos/XMR/xmrig/ 2> /dev/null
 
 echo ""
 echo "  Creando ID para el minero..."
