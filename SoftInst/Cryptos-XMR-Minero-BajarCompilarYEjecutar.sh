@@ -5,9 +5,12 @@
 # Si se te llena la boca hablando de libertad entonces hazlo realmente libre.
 # No tienes que aceptar ningún tipo de términos de uso o licencia para utilizarlo o modificarlo porque va sin CopyLeft.
 
-#-----------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------
 #  Script de NiPeGun para actualizar bajar el código fuente, compilar y ejecutar el minero de monero
-#-----------------------------------------------------------------------------------------------------
+#
+#  Ejecución remota:
+#  curl -s https://raw.githubusercontent.com/nipegun/t-scripts/main/SoftInst/Cryptos-XMR-Minero-BajarCompilarYEjecutar.sh | bash
+#----------------------------------------------------------------------------------------------------------------------------------
 
 DirWallet="451K8ZpJTWdLBKb5uCR1EWM5YfCUxdgxWFjYrvKSTaWpH1zdz22JDQBQeZCw7wZjRm3wqKTjnp9NKZpfyUzncXCJ24H4Xtr"
 Hilos=$(cat /proc/self/status | grep pus_allowed_list | cut -d"-" -f2)
