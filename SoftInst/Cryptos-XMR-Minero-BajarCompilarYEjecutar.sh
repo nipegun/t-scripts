@@ -5,15 +5,26 @@
 # Si se te llena la boca hablando de libertad entonces hazlo realmente libre.
 # No tienes que aceptar ningún tipo de términos de uso o licencia para utilizarlo o modificarlo porque va sin CopyLeft.
 
-#----------------------------------------------------------------------------------------------------------------------------------
-#  Script de NiPeGun para actualizar bajar el código fuente, compilar y ejecutar el minero de monero
+# ----------
+# Script de NiPeGun para actualizar bajar el código fuente, compilar y ejecutar el minero de monero
 #
 #  Ejecución remota:
-#  curl -s https://raw.githubusercontent.com/nipegun/t-scripts/main/SoftInst/Cryptos-XMR-Minero-BajarCompilarYEjecutar.sh | bash
-#----------------------------------------------------------------------------------------------------------------------------------
+#   curl -s https://raw.githubusercontent.com/nipegun/t-scripts/main/SoftInst/Cryptos-XMR-Minero-BajarCompilarYEjecutar.sh | bash
+# ----------
 
-DirWallet="451K8ZpJTWdLBKb5uCR1EWM5YfCUxdgxWFjYrvKSTaWpH1zdz22JDQBQeZCw7wZjRm3wqKTjnp9NKZpfyUzncXCJ24H4Xtr"
-Hilos=$(cat /proc/self/status | grep pus_allowed_list | cut -d"-" -f2)
+vDirWallet="451K8ZpJTWdLBKb5uCR1EWM5YfCUxdgxWFjYrvKSTaWpH1zdz22JDQBQeZCw7wZjRm3wqKTjnp9NKZpfyUzncXCJ24H4Xtr"
+
+# Definir variables de color
+  vColorAzul="\033[0;34m"
+  vColorAzulClaro="\033[1;34m"
+  vColorVerde='\033[1;32m'
+  vColorRojo='\033[1;31m'
+  vFinColor='\033[0m'
+
+# Notificar el inicio de ejecución del script
+  echo ""
+  echo -e "${ColorAzulClaro}  Iniciando el script de compilación y ejecución de XMRig...${FinColor}"
+  echo ""
 
 echo ""
 echo "  Actualizando Termux..."
@@ -45,31 +56,32 @@ pkg install -y cmake
 cmake .. -DWITH_HWLOC=OFF
 make -j $(nproc)
 
-## Preparar la carpeta del minero
-   mv ~/Cryptos/XMR/xmrig/build/ ~/Cryptos/XMR/minero/
-   rm -rf ~/Cryptos/XMR/xmrig/ 2> /dev/null
+# Preparar la carpeta del minero
+  mv ~/Cryptos/XMR/xmrig/build/ ~/Cryptos/XMR/minero/
+  rm -rf ~/Cryptos/XMR/xmrig/ 2> /dev/null
 
 echo ""
 echo "  Creando ID para el minero..."
 echo ""
+# A partir de la MAC WiFi
+  # Obtener MAC de la WiFi
+    vDirMACwlan0=$(ip addr show wlan0 | grep link/ether | cut -d" " -f6 | sed 's/://g')
+  # Generar un identificador del minero a partir de la MAC de la WiFi...
+    vIdMinero=$(echo -n $DirMACwlan0 | md5sum | cut -d" " -f1)
 
-## A partir de la MAC WiFi
-   ## Obtener MAC de la WiFi
-      DirMACwlan0=$(ip addr show wlan0 | grep link/ether | cut -d" " -f6 | sed 's/://g')
-   ## Generar un identificador del minero a partir de la MAC de la WiFi...
-      IdMinero=$(echo -n $DirMACwlan0 | md5sum | cut -d" " -f1)
+echo ""
+echo "  Determinando la cantidad de hilos a utilizar en el proceso..."
+echo ""
+vHilos=$(cat /proc/self/status | grep pus_allowed_list | cut -d"-" -f2)
 
 echo ""
 echo "  Ejecutando minero con identificador:"
 echo ""
-echo "  $IdMinero..."
+echo "  $vIdMinero..."
 echo ""
-
-## Con TLS
-   ~/Cryptos/XMR/minero/xmrig -o pool.minexmr.com:443 --threads=$Hilos --rig-id=$IdMinero -u $DirWallet --tls 
-
-## Sin TLS
-   #~/Cryptos/XMR/minero/xmrig -o pool.minexmr.com:4444 --threads=$Hilos --rig-id=$IdMinero -u $DirWallet
-
+# Sin TLS
+  #~/Cryptos/XMR/minero/xmrig -o xmrpool.eu:9999 --threads=$vHilos --rig-id=$vIdMinero -u $vDirWallet
+# Con TLS
+  ~/Cryptos/XMR/minero/xmrig -o xmrpool.eu:9999 --threads=$vHilos --rig-id=$vIdMinero -u $vDirWallet --tls
 #/data/data/com.termux/files/home/xmrig/build/xmrig
 
