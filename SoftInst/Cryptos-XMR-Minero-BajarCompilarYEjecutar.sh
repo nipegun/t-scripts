@@ -6,7 +6,7 @@
 # No tienes que aceptar ningún tipo de términos de uso o licencia para utilizarlo o modificarlo porque va sin CopyLeft.
 
 # ----------
-# Script de NiPeGun para actualizar bajar el código fuente, compilar y ejecutar el minero de monero
+# Script de NiPeGun para bajar el código fuente, compilar y ejecutar el minero de monero
 #
 #  Ejecución remota:
 #   curl -s https://raw.githubusercontent.com/nipegun/t-scripts/main/SoftInst/Cryptos-XMR-Minero-BajarCompilarYEjecutar.sh | bash
