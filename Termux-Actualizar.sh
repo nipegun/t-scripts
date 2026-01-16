@@ -9,10 +9,9 @@
 #  Script de NiPeGun para actualizar Termux
 #--------------------------------------------
 
-apt-get -y update
-apt-get -y upgrade
-apt-get -y dist-upgrade
-
-pkg update -y
+apt --fix-broken install
+pkg update
 pkg upgrade -y
+pkg -y install termux-tools -y
+pkg -y install coreutils -y
 
