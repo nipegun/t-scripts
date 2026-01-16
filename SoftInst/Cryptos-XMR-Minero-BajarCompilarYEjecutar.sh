@@ -9,7 +9,7 @@
 # Script de NiPeGun para bajar el código fuente, compilar y ejecutar el minero de monero
 #
 #  Ejecución remota:
-#   curl -s https://raw.githubusercontent.com/nipegun/t-scripts/main/SoftInst/Cryptos-XMR-Minero-BajarCompilarYEjecutar.sh | bash
+#   curl -sL https://raw.githubusercontent.com/nipegun/t-scripts/refs/heads/main/SoftInst/Cryptos-XMR-Minero-BajarCompilarYEjecutar.sh | bash
 # ----------
 
 vDirWallet="451K8ZpJTWdLBKb5uCR1EWM5YfCUxdgxWFjYrvKSTaWpH1zdz22JDQBQeZCw7wZjRm3wqKTjnp9NKZpfyUzncXCJ24H4Xtr"
