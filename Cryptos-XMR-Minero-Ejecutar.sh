@@ -9,7 +9,7 @@
 #  Script de NiPeGun para ejecutar el minero de monero en Termux
 #
 #  Ejecución remota:
-#  curl -s https://raw.githubusercontent.com/nipegun/t-scripts/main/Cryptos-XMR-Minero-Ejecutar.sh | bash
+#  curl -sL https://raw.githubusercontent.com/nipegun/t-scripts/refs/heads/main/Cryptos-XMR-Minero-Ejecutar.sh| bash
 #----------------------------------------------------------------------------------------------------------
 
 DirWallet="451K8ZpJTWdLBKb5uCR1EWM5YfCUxdgxWFjYrvKSTaWpH1zdz22JDQBQeZCw7wZjRm3wqKTjnp9NKZpfyUzncXCJ24H4Xtr"
